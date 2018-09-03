@@ -31,24 +31,7 @@ public class AppBarActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
         setPointer();
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                            .setAction("Action", null).show();
-//                }
-//        });
-
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.addDrawerListener(toggle);
-//        toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -121,6 +104,11 @@ public class AppBarActivity extends AppCompatActivity
                 setMyFrag(new TankFrag());
                 Toast.makeText(this,"Share pressed",Toast.LENGTH_LONG).show();
                 break;
+//                camera for catch problem or for save data for the soldier in his private folder
+//                case R.id.nav_share:
+//                setMyFrag(new TankFrag());
+//                Toast.makeText(this,"Share pressed",Toast.LENGTH_LONG).show();
+//                break;
 
            default: setMyFrag(new TankFrag());
         }

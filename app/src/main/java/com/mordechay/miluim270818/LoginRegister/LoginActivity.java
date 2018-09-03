@@ -7,6 +7,7 @@ import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -56,121 +57,53 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class LoginActivity extends AppCompatActivity {
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
-    private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
-    private String txtEmail,txtPass;
     private FragmentManager fm;
     private FragmentTransaction ft;
-    LoginFrag loginFrag;
     RegisterFrag registerFrag;
-    Button btnLog,btnReg,btnFLog,btnFReg;
+    Button btnFLog,btnFReg;
+    Context context;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         Backendless.setUrl(Defaults.SERVER_URL);
         Backendless.initApp(getApplicationContext(),Defaults.APPLICATION_ID,Defaults.API_KEY);
+
+        btnFLog = findViewById(R.id.btnToLogFrag);
+        btnFReg = findViewById(R.id.btnToRegFrag);
+
+        fm = getFragmentManager();
+        ft = fm.beginTransaction();
+
+        registerFrag=new RegisterFrag();
 
         setPointer();
        }
 
     @SuppressLint("CommitTransaction")
     private void setPointer() {
-        mEmailView = findViewById(R.id.email);
-        mPasswordView = findViewById(R.id.password);
-        txtPass = String.valueOf(mPasswordView);
-        txtEmail = String.valueOf(mEmailView);
-        fm = getFragmentManager();
-        ft = fm.beginTransaction();
-    }
-//        btnLog = findViewById(R.id.email_sign_in_button_to_signin);
-//        btnLog.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(LoginActivity.this,"sign pressed",Toast.LENGTH_LONG).show();
-//                loginUser();
-//            }
-//        });
-//
-//       btnReg = findViewById(R.id.email_register_button_to_register);
-//       btnReg.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                register();
-//                Toast.makeText(LoginActivity.this,"regis pressed",Toast.LENGTH_LONG).show();
-//            }
-//        });
-//
-//       btnFLog = findViewById(R.id.email_sign_in_button_to_signin);
-//       btnFLog.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                setMyFrag(new LoginFrag());
-//                Toast.makeText(LoginActivity.this,"fragSign pressed",Toast.LENGTH_LONG).show();
-//            }
-//        });
-//
-//       btnFReg = findViewById(R.id.email_sign_in_button_to_signin);
-//       btnFReg.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                setMyFrag(new RegisterFrag());
-//                Toast.makeText(LoginActivity.this,"fragRegis pressed",Toast.LENGTH_LONG).show();
-//            }
-//        });
-//
-
-
-
-
-
-
-
-
-    private void loginUser(){
-        Backendless.UserService.login(txtEmail, txtPass, new AsyncCallback<BackendlessUser>() {
-                    @Override
-                    public void handleResponse(BackendlessUser response) {
-                        Toast.makeText(LoginActivity.this,"login Succeed",Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void handleFault(BackendlessFault fault) {
-                        Log.e("err","hsndleFault: "+ fault.getCode());
-                        Toast.makeText(LoginActivity.this, "there's a problema",Toast.LENGTH_LONG).show();
-
-                    }
-                }
-        );
-    }
-    private void register() {
-        BackendlessUser user = new BackendlessUser();
-        user.setProperty("email",String.valueOf(R.id.email));
-
-        user.setPassword(String.valueOf(R.id.password));
-        user.setProperty("age",Integer.valueOf(R.id.age));
-        user.setProperty("gender",String.valueOf(R.id.gender));
-
-        Backendless.UserService.register(user, new AsyncCallback<BackendlessUser>() {
+        btnFLog.setOnClickListener(new OnClickListener() {
             @Override
-            public void handleResponse(BackendlessUser response) {
-                Toast.makeText(LoginActivity.this,"user Registered",Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void handleFault(BackendlessFault fault) {
-                Toast.makeText(LoginActivity.this,"error in registration",Toast.LENGTH_LONG).show();
-                Log.e("err","handleFault: " + fault.getCode());
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"flog pressed",Toast.LENGTH_LONG).show();
+                setMyFrag(new LoginFrag());
             }
         });
-    }
+        btnFReg.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LoginActivity.this,"freg pressed",Toast.LENGTH_LONG).show();
+                setMyFrag(new RegisterFrag());
+            }
+        });
+        }
+
     public void setMyFrag(Fragment myFrag) {
         ft = fm.beginTransaction();
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
@@ -178,33 +111,29 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
         ft.commit();
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        int v = view.getId();
-        switch (v){
-            case R.id.email_sign_in_button_to_signin:
-                Toast.makeText(LoginActivity.this,"sign pressed",Toast.LENGTH_LONG).show();
-                loginUser();
-                break;
-            case R.id.email_register_button_to_register:
-                register();
-                Toast.makeText(LoginActivity.this,"regis pressed",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.email_sign_in_button_to_frag:
-                setMyFrag(new LoginFrag());
-                Toast.makeText(LoginActivity.this,"fragSign pressed",Toast.LENGTH_LONG).show();
-                break;
-            case R.id.email_register_button_to_frag:
-                setMyFrag(new RegisterFrag());
-                Toast.makeText(LoginActivity.this,"fragRegis pressed",Toast.LENGTH_LONG).show();
-                break;
 
-        }
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
+//    @Override
+//    public void onClick(View v) {
+//        int id = v.getId();
+//        switch (id){
+//            case R.id.email_sign_in_button_to_signin:
+//                Toast.makeText(LoginActivity.this,"sign pressed",Toast.LENGTH_LONG).show();
+//                loginUser();
+//                break;
+//            case R.id.email_register_button_to_register:
+//                register();
+//                Toast.makeText(LoginActivity.this,"regis pressed",Toast.LENGTH_LONG).show();
+//                break;
+//            case R.id.email_sign_in_button_to_frag:
+//                setMyFrag(new LoginFrag());
+//                Toast.makeText(LoginActivity.this,"fragSign pressed",Toast.LENGTH_LONG).show();
+//                break;
+//            case R.id.email_register_button_to_frag:
+//                setMyFrag(new RegisterFrag());
+//                Toast.makeText(LoginActivity.this,"fragRegis pressed",Toast.LENGTH_LONG).show();
+//                break;
+//
+//        }
+//    }
 }
 

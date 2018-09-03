@@ -1,5 +1,6 @@
 package com.mordechay.miluim270818;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,47 +19,44 @@ public class MainActivity extends AppCompatActivity {
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
        private String txtEmail,txtPass;
+       Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context =this;
 
         Backendless.setUrl(Defaults.SERVER_URL);
         Backendless.initApp(getApplicationContext(),Defaults.APPLICATION_ID,Defaults.API_KEY);
 
-        setPointer();
-        saveData();
+
+//        setPointer();
+//        saveData();
     }
 
-    private void setPointer() {
-        mEmailView = findViewById(R.id.email);
-        mPasswordView = findViewById(R.id.password);
-//txtPass = mPasswordView.toString();
-
-        txtPass = String.valueOf(mPasswordView);
-        txtEmail = String.valueOf(mEmailView);
-    }
-
-    private void saveData() {
-        friends friends = new friends();
-//        friends.setImagePerson(R.drawable.btn_facebook_bg);
-        friends.setName(txtEmail);
-        friends.setPhoneNumber(String.valueOf(R.id.password));
-
-        Backendless.Persistence.save(friends, new AsyncCallback<com.mordechay.miluim270818.friends>() {
-            @Override
-            public void handleResponse(com.mordechay.miluim270818.friends response) {
-                Toast.makeText(MainActivity.this,"data saved", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void handleFault(BackendlessFault fault) {
-                Toast.makeText(MainActivity.this,"data isnt saved",Toast.LENGTH_LONG).show();
-                Log.e("data","handleFault: " +fault.getMessage());
-            }
-        });
-    }
+//    private void setPointer() {
+//    }
+//
+//    private void saveData() {
+//        friends friends = new friends();
+//       friends.setImagePerson(R.drawable.btn_facebook_bg);
+//        friends.setName(txtEmail);
+//        friends.setPhoneNumber(String.valueOf(R.id.password));
+//
+//        Backendless.Persistence.save(friends, new AsyncCallback<com.mordechay.miluim270818.friends>() {
+//            @Override
+//            public void handleResponse(com.mordechay.miluim270818.friends response) {
+//                Toast.makeText(MainActivity.this,"data saved", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void handleFault(BackendlessFault fault) {
+//                Toast.makeText(MainActivity.this,"data isnt saved",Toast.LENGTH_LONG).show();
+//                Log.e("data","handleFault: " +fault.getMessage());
+//            }
+//        });
+//    }
 
 
 
