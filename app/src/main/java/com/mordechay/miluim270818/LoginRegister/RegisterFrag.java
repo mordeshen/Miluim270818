@@ -36,7 +36,6 @@ public class RegisterFrag extends Fragment {
         View v = inflater.inflate(R.layout.register, container, false);
         txtEmail = v.findViewById(R.id.email);
         txtAge = v.findViewById(R.id.age);
-        txtGender = v.findViewById(R.id.gender);
         txtPass = v.findViewById(R.id.password);
         btnReg = v.findViewById(R.id.btnRegister);
 //        Backendless.setUrl(Defaults.SERVER_URL);
@@ -63,7 +62,6 @@ public class RegisterFrag extends Fragment {
         user.setProperty("email",txtEmail.getText().toString());
         user.setPassword(txtPass.getText().toString());
         user.setProperty("age",Integer.valueOf(txtAge.getText().toString()));
-        user.setProperty("gender",txtGender.getText().toString());
 
         Backendless.UserService.register(user, new AsyncCallback<BackendlessUser>() {
             @Override

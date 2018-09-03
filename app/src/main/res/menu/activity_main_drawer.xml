@@ -8,15 +8,16 @@
             <item
                 android:id="@+id/nav_tank"
                 android:icon="@drawable/tank"
-                android:title="My Tank" />
+                android:title="@string/tank_HL"
+                />
             <item
                 android:id="@+id/nav_friend"
                 android:icon="@drawable/friend"
-                android:title="My Friends" />
+                android:title="@string/friend_Hl" />
             <item
                 android:id="@+id/nav_kishur"
                 android:icon="@drawable/soldier"
-                android:title="Kishur" />
+                android:title="s" />
             <item
                 android:id="@+id/nav_proMaterial"
                 android:icon="@drawable/pro_materia"

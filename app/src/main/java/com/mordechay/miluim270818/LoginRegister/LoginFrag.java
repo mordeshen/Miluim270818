@@ -24,17 +24,15 @@ import com.mordechay.miluim270818.R;
 public class LoginFrag extends Fragment implements View.OnClickListener {
     private AutoCompleteTextView mEmailView;
     Button btnLog;
-    private EditText mPasswordView;
     EditText txtEmail,txtPass;
-    String BEPass,BEEmail;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.login_frag, container, false);
-        txtEmail = (EditText)v.findViewById(R.id.email);
-        txtPass = (EditText) v.findViewById(R.id.password);
+        txtEmail = (EditText)v.findViewById(R.id.emailLog);
+        txtPass = (EditText) v.findViewById(R.id.passwordLog);
         btnLog = (Button) v.findViewById(R.id.btnLogin);
         return v;
        }
@@ -46,7 +44,7 @@ public class LoginFrag extends Fragment implements View.OnClickListener {
     }
 
     private void loginUser(){
-        Backendless.UserService.login((txtPass.getText().toString()), (txtPass.getText().toString()), new AsyncCallback<BackendlessUser>() {
+        Backendless.UserService.login((txtEmail.getText().toString()),(txtPass.getText().toString()), new AsyncCallback<BackendlessUser>() {
                     @Override
                     public void handleResponse(BackendlessUser response) {
                         Toast.makeText(getActivity(),"login Succeed",Toast.LENGTH_LONG).show();

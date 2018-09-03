@@ -6,6 +6,7 @@
     <string name="prompt_email">Email</string>
     <string name="login_hl">Sign In</string>
     <string name="sign_up_hl">Login</string>
+    <string name="kishur_hl">Kishur</string>
     <string name="prompt_age">Age</string>
     <string name="prompt_gender">Gender</string>
     <string name="prompt_password">Password</string>
