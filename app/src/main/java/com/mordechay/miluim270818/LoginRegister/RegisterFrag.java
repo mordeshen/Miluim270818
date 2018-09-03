@@ -23,12 +23,9 @@ import com.mordechay.miluim270818.MainActivity;
 import com.mordechay.miluim270818.R;
 
 public class RegisterFrag extends Fragment {
-    private AutoCompleteTextView mEmailView;
-    Button btnLog,btnReg,btnFLog,btnFReg;
-    EditText mPasswordView;
-    EditText txtEmail,txtPass,txtAge,txtGender;
-    Activity activity;
-    View v;
+    Button btnReg;
+    EditText txtEmail,txtPass,txtAge;
+
 
     @Nullable
     @Override
@@ -38,8 +35,6 @@ public class RegisterFrag extends Fragment {
         txtAge = v.findViewById(R.id.age);
         txtPass = v.findViewById(R.id.password);
         btnReg = v.findViewById(R.id.btnRegister);
-//        Backendless.setUrl(Defaults.SERVER_URL);
-//        Backendless.initApp(getActivity(),Defaults.APPLICATION_ID,Defaults.API_KEY);
         return v;
     }
 

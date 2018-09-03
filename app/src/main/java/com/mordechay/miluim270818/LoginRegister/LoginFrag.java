@@ -22,7 +22,6 @@ import com.mordechay.miluim270818.MainActivity;
 import com.mordechay.miluim270818.R;
 
 public class LoginFrag extends Fragment implements View.OnClickListener {
-    private AutoCompleteTextView mEmailView;
     Button btnLog;
     EditText txtEmail,txtPass;
 
