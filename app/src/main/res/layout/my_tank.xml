@@ -8,33 +8,12 @@ android:orientation="vertical"
     android:layout_marginTop="50dp">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/lblHLTank"
-        android:text="@string/tank_HL"
-        android:gravity="center"
-        android:textSize="32dp"
-        /><TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/lblHLTank1"
-    android:text="@string/tank_HL"
-    android:gravity="center"
-    android:textSize="32dp"
-    /><TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/lblHLTank2"
-    android:text="@string/tank_HL"
-    android:gravity="center"
-    android:textSize="32dp"
-    /><TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/lblHLTank3"
     android:text="@string/tank_HL"
     android:gravity="center"
-    android:textSize="32dp"
+    android:textSize="32sp"
     />
 <android.support.v7.widget.RecyclerView
     android:id="@+id/recyclerViewTank"
@@ -44,4 +23,9 @@ android:orientation="vertical"
     android:layout_weight="1"
     />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="here camera can input proclems of the tank/ maybe "
+        />
 </LinearLayout>

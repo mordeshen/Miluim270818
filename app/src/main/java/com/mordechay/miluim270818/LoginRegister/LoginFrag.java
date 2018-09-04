@@ -1,5 +1,6 @@
 package com.mordechay.miluim270818.LoginRegister;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -44,11 +45,11 @@ public class LoginFrag extends Fragment implements View.OnClickListener {
 
     private void loginUser(){
         Backendless.UserService.login((txtEmail.getText().toString()),(txtPass.getText().toString()), new AsyncCallback<BackendlessUser>() {
+                    @SuppressLint("ResourceType")
                     @Override
                     public void handleResponse(BackendlessUser response) {
                         Toast.makeText(getActivity(),"login Succeed",Toast.LENGTH_LONG).show();
                         startActivity(new Intent(getActivity(), MainActivity.class));
-
                     }
 
                     @Override

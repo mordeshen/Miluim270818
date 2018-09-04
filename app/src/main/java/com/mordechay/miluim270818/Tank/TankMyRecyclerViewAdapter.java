@@ -20,6 +20,7 @@ public class TankMyRecyclerViewAdapter extends RecyclerView.Adapter<TankMyRecycl
     private final String TAG="RecyclerView Adapter";
     //our data set list
     private List<TankDataObject>lstDataSet;
+
     //create interface for click listener
     public interface MyClickListener{
         void onItemClick(int position, View v);

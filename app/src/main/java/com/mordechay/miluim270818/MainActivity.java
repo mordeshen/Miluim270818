@@ -1,6 +1,7 @@
 package com.mordechay.miluim270818;
 
 import android.content.Context;
+import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,20 +17,14 @@ import com.backendless.exceptions.BackendlessFault;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AutoCompleteTextView mEmailView;
-    private EditText mPasswordView;
-       private String txtEmail,txtPass;
-       Context context;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        context =this;
 
         Backendless.setUrl(Defaults.SERVER_URL);
         Backendless.initApp(getApplicationContext(),Defaults.APPLICATION_ID,Defaults.API_KEY);
-
+//        AppBarLayout appBarLayout = new AppBarLayout(this);
 
 //        setPointer();
 //        saveData();

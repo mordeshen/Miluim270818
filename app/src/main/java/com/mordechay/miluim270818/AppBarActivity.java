@@ -9,6 +9,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
@@ -32,18 +33,17 @@ public class AppBarActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setPointer();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
     private void setPointer() {
         fm = getFragmentManager();
         ft = fm.beginTransaction();
         tankFrag = new TankFrag();
         friendFrag = new FriendFrag();
+    }
 
-
-   }
 
     @Override
     public void onBackPressed() {
@@ -55,6 +55,10 @@ public class AppBarActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * to bom:
+     * menu - set account/
+     */
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        // Inflate the menu; this adds items to the action bar if it is present.
@@ -80,11 +84,11 @@ public class AppBarActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         switch (id){
             case R.id.nav_tank:
+                Log.e("err", "onNavigationItemSelected: tamk pressed");
                 setMyFrag(new TankFrag());
                 Toast.makeText(this,"Tank pressed",Toast.LENGTH_LONG).show();
                 break;
@@ -121,7 +125,7 @@ public class AppBarActivity extends AppCompatActivity
     public void setMyFrag(Fragment myFrag) {
         ft = fm.beginTransaction();
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.replace(R.id.container,myFrag);
+        ft.replace(R.id.containerMain,myFrag);
         ft.commit();
     }
 }

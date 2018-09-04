@@ -112,9 +112,16 @@
     <string name="gp_WebApp_ClientId"></string>
     <string name="gp_WebApp_ClientSecret"></string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <!-- __________ end __________ -->
+
+    <string name="my_tank_nav">My Tank</string>
+    <string name="my_friends_nav">My Friends</string>
+    <string name="kishur_nav">Kishur</string>
+    <string name="communicate_nav">Communicate</string>
+    <string name="nav_faq">FAQ</string>
+    <string name="nav_share">Share</string>
+    <string name="nav_send">Send</string>
+    <string name="nav_miluim_nik">MiluiM NiK</string>
+    <string name="nav_username">User name</string>
 
 
 </resources>
