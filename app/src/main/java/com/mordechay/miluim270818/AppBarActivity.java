@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.mordechay.miluim270818.Chat.ChatFragRec;
 import com.mordechay.miluim270818.Friend.FriendFrag;
 import com.mordechay.miluim270818.Tank.TankFrag;
 
@@ -93,11 +94,15 @@ public class AppBarActivity extends AppCompatActivity
                 Toast.makeText(this,"Tank pressed",Toast.LENGTH_LONG).show();
                 break;
             case R.id.nav_friend:
-                setMyFrag(new FriendFrag());
                 Toast.makeText(this,"friend pressed",Toast.LENGTH_LONG).show();
+                ft = fm.beginTransaction();
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.replace(R.id.containerMain,new FriendFrag());
+                ft.add(R.id.LLFragChat,new ChatFragRec());
+                ft.commit();
                 break;
             case R.id.nav_kishur:
-                setMyFrag(new TankFrag());
+                setMyFrag(new ChatFragRec());
                 Toast.makeText(this,"Kishur pressed",Toast.LENGTH_LONG).show();
                 break;
             case R.id.nav_proMaterial:

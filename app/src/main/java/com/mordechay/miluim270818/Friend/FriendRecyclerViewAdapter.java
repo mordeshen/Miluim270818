@@ -53,7 +53,7 @@ public class FriendRecyclerViewAdapter extends RecyclerView.Adapter<FriendRecycl
             txtFriendTel=itemView.findViewById(R.id.txtFriendTel);
 
 
-//            itemView.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
 
         //because we declare interface as implementation of on click listener, we can add some extra
